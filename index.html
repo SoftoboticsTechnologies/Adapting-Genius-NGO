@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>NGO – NGO</title>
+<meta name="description" content="Adapting Genius – Because Only Together We Can. Build a World Where All Youth Are Safe, Strong &amp; Valued.">
+<meta property="og:title" content="Adapting Genius">
+<meta property="og:image" content="https://adaptingenius.org/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-16-at-11.51.51-PM-1.jpeg">
+<link rel="canonical" href="https://adaptingenius.org/">
+<link rel="icon" href="https://adaptingenius.org/wp-content/uploads/2022/08/cropped-WhatsApp-Image-2022-08-16-at-11.51.03-PM-1.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fdf6ee;color:#3a1838;font-family:'Public Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+img{display:block;max-width:100%}
+a{color:#c21f55;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:#f47c3c}
+:focus-visible{outline:2px solid #e2336b;outline-offset:3px;border-radius:2px}
+input,textarea,button{font:inherit}
+@keyframes agFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+
+<a href="#content" style="position:absolute;left:-9999px;top:8px;background:#3a1838;color:#fff;padding:10px 16px;z-index:100" style-focus="left:8px">Skip to content</a>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(253,246,238,0.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid {{ headerBorder }};transition:border-color .25s, box-shadow .25s;box-shadow:{{ headerShadow }}">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px);height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#/" aria-label="Adapting Genius – Home" style="display:flex;align-items:center;flex-shrink:0">
+      <img src="assets/images/Adapting%20Genius%20Pencil%20Logo.png" alt="Adapting Genius" width="99" height="50" style="height:50px;width:auto;mix-blend-mode:multiply"></img>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:4px">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+          <a href="{{ item.href }}" aria-current="{{ item.current }}" style="position:relative;padding:10px 14px;font-size:15px;font-weight:500;color:#3a1838;text-decoration:none;border-radius:6px;transition:background .15s" style-hover="background:rgba(58,24,56,0.06);color:#3a1838">{{ item.label }}<sc-if value="{{ item.active }}"><span style="position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:#e2336b;border-radius:2px"></span></sc-if></a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="#/contact-us" role="button" aria-haspopup="dialog" onClick="{{ openDonate }}" style="display:inline-flex;align-items:center;height:44px;padding:0 22px;background:#e2336b;color:#fff;font-weight:600;font-size:15px;border-radius:999px;text-decoration:none;transition:background .15s, transform .15s" style-hover="background:#c21f55;color:#fff">Donate</a>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpenStr }}" aria-controls="mobile-menu" aria-label="Menu" style="width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:transparent;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;cursor:pointer">
+          <span style="width:18px;height:2px;background:#3a1838;border-radius:2px"></span>
+          <span style="width:18px;height:2px;background:#3a1838;border-radius:2px"></span>
+          <span style="width:18px;height:2px;background:#3a1838;border-radius:2px"></span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav id="mobile-menu" aria-label="Primary" style="border-top:1px solid rgba(58,24,56,0.08);background:#fdf6ee;padding:8px clamp(20px,4vw,40px) 20px;display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+        <a href="{{ item.href }}" aria-current="{{ item.current }}" onClick="{{ closeMenu }}" style="padding:14px 0;font-size:18px;font-weight:500;color:#3a1838;text-decoration:none;border-bottom:1px solid rgba(58,24,56,0.08);display:flex;justify-content:space-between;align-items:center">{{ item.label }}<sc-if value="{{ item.active }}"><span style="width:8px;height:8px;border-radius:50%;background:#e2336b"></span></sc-if></a>
+      </sc-for>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="content" tabindex="-1" style="outline:none">
+
+<!-- HOME -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Home" style="animation:agFade .5s ease both">
+  <section style="position:relative;min-height:clamp(520px,78vh,780px);display:flex;align-items:center;overflow:hidden;background:#3a1838">
+    <img src="assets/images/home-hero.png" alt="Children smiling with a volunteer" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 30%"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(200,28,88,.9) 0%,rgba(232,70,90,.65) 45%,rgba(244,124,60,0) 85%)"></div>
+    <div style="position:relative;max-width:1240px;width:100%;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px)">
+      <div style="display:flex;flex-direction:column;gap:22px;max-width:640px">
+        <h4 style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Because Only Together We Can</h4>
+        <h1 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(56px,7.6vw,104px);line-height:1.02;color:#fff;text-wrap:balance">Build a World Where All Youth Are Safe, Strong &amp; Valued<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h1>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+          <a href="#/who-we-are" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;background:#fff;color:#c21f55;font-weight:700;border-radius:999px;text-decoration:none;transition:transform .15s" style-hover="transform:translateY(-2px);color:#c21f55">Read More <span aria-hidden="true">→</span></a>
+          <a href="#/contact-us" role="button" aria-haspopup="dialog" onClick="{{ openDonate }}" style="display:inline-flex;align-items:center;height:52px;padding:0 26px;border:1.5px solid #fff;color:#fff;font-weight:600;border-radius:999px;text-decoration:none;transition:background .15s" style-hover="background:#fff;color:#3a1838">Donate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-who" style="background:#fde9ee;border-radius:clamp(28px,4vw,48px);margin:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,5vw,72px)">
+        <h2 id="h-who" style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(44px,5.2vw,68px);line-height:1.1;letter-spacing:-.015em">Who We Are<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#f47c3c" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h2>
+        <div style="display:flex;flex-direction:column;gap:18px;font-size:17px;line-height:1.7;color:#5b4352;max-width:680px">
+          <p style="margin:0">As a manifestation of our guiding concept of “stewardship,” the School’s Foundation is dedicated to upholding high standards of accountability and openness.<br>We put a lot of effort into developing the abilities and skills of poor kids. To preserve pupils’ health, physical education is encouraged. Campaigns are launched to educate pupils about all the important topics.</p>
+          <p style="margin:0">The school’s foundation assists in locating the students who are most at risk in India’s poorest areas. Children miss school because it is inaccessible and expensive. Using the Right to Education Act as a guide, we assist in enrolling kids in school.</p>
+          <p style="margin:0">In order to acquire a decent education, additional factors are crucial.</p>
+          <a href="#/who-we-are" style="align-self:flex-start;margin-top:6px;font-weight:600;color:#3a1838;display:inline-flex;gap:8px;text-decoration:underline;text-decoration-color:#e2336b;text-decoration-thickness:2px;text-underline-offset:6px">Read More <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+          <button type="button" onClick="{{ g.open }}" aria-label="{{ g.label }}" style="padding:0;border:0;background:#f6d4dc;border-radius:22px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3">
+            <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" style-hover="transform:scale(1.04)"></img>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-diff" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px">
+      <h2 id="h-diff" style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(44px,5.2vw,68px);line-height:1.1;letter-spacing:-.015em">What Makes Us Different<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#f47c3c" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h2>
+      <a href="#/academics" style="font-weight:600;color:#3a1838;display:inline-flex;gap:8px;text-decoration:underline;text-decoration-color:#e2336b;text-decoration-thickness:2px;text-underline-offset:6px">Read More <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px">
+      <div style="background:#fff;border-radius:28px;padding:32px 30px 36px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(58,24,56,0.06);transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px -20px rgba(226,51,107,0.45)"><span style="align-self:flex-start;width:44px;height:44px;border-radius:50%;background:#fde3ea;display:flex;align-items:center;justify-content:center;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;color:#c21f55">01</span><h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:36px">We Educate</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5b4352">We help underprivileged Children by funding, tools, training, and support they need</p></div>
+      <div style="background:#fff;border-radius:28px;padding:32px 30px 36px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(58,24,56,0.06);transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px -20px rgba(226,51,107,0.45)"><span style="align-self:flex-start;width:44px;height:44px;border-radius:50%;background:#fde3ea;display:flex;align-items:center;justify-content:center;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;color:#c21f55">02</span><h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:36px">We Help</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5b4352">We help identifying the most vulnerable children to get a Quality Education</p></div>
+      <div style="background:#fff;border-radius:28px;padding:32px 30px 36px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(58,24,56,0.06);transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px -20px rgba(226,51,107,0.45)"><span style="align-self:flex-start;width:44px;height:44px;border-radius:50%;background:#fde3ea;display:flex;align-items:center;justify-content:center;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;color:#c21f55">03</span><h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:36px">We Build</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5b4352">We Help in proper implementation of education by strengthening School Infrastructures.</p></div>
+      <div style="background:#fff;border-radius:28px;padding:32px 30px 36px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(58,24,56,0.06);transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px -20px rgba(226,51,107,0.45)"><span style="align-self:flex-start;width:44px;height:44px;border-radius:50%;background:#fde3ea;display:flex;align-items:center;justify-content:center;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;color:#c21f55">04</span><h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:36px">We Educate</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5b4352">Making every child School ready</p></div>
+      <div style="background:#fff;border-radius:28px;padding:32px 30px 36px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(58,24,56,0.06);transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px -20px rgba(226,51,107,0.45)"><span style="align-self:flex-start;width:44px;height:44px;border-radius:50%;background:#fde3ea;display:flex;align-items:center;justify-content:center;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;color:#c21f55">05</span><h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:36px">We Donate</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5b4352">We help by donating books and other learning materials to children and schools in need.</p></div>
+      <div style="background:#fff;border-radius:28px;padding:32px 30px 36px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 rgba(58,24,56,0.06);transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px -20px rgba(226,51,107,0.45)"><span style="align-self:flex-start;width:44px;height:44px;border-radius:50%;background:#fde3ea;display:flex;align-items:center;justify-content:center;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;color:#c21f55">06</span><h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:36px">We Consult</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5b4352">We foster opportunities for children to regularly explore their environment and engage with art</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-ece" style="background:linear-gradient(120deg,#e2336b 0%,#f47c3c 100%);color:#fff;border-radius:clamp(28px,4vw,48px);margin:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,88px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <h2 id="h-ece" style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(44px,5.2vw,68px);line-height:1.1;letter-spacing:-.015em;color:#fff">Early Childhood Education<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#fff" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h2>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#fff;max-width:620px">Early Childhood Education [ECE] is one of the largest unregulated spaces in Indian Education. Despite research and efforts to improve quality, the gap between different economic sections of society is widening each year in terms of the parent’s ability to provide quality ECE for their children.</p>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <li style="display:flex;gap:20px;align-items:baseline;padding:24px 0;border-top:1px solid rgba(255,255,255,0.35)"><span style="width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0;transform:translateY(-2px)"></span><span style="font-family:'Public Sans',system-ui,sans-serif;font-size:clamp(22px,2.2vw,28px);line-height:1.3;color:#fff">90% of a child's brain develops before the age of 6</span></li>
+        <li style="display:flex;gap:20px;align-items:baseline;padding:24px 0;border-top:1px solid rgba(255,255,255,0.35)"><span style="width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0;transform:translateY(-2px)"></span><span style="font-family:'Public Sans',system-ui,sans-serif;font-size:clamp(22px,2.2vw,28px);line-height:1.3;color:#fff">High returns on investment in early childhood development</span></li>
+        <li style="display:flex;gap:20px;align-items:baseline;padding:24px 0;border-top:1px solid rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.35)"><span style="width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0;transform:translateY(-2px)"></span><span style="font-family:'Public Sans',system-ui,sans-serif;font-size:clamp(22px,2.2vw,28px);line-height:1.3;color:#fff">Builds strong foundation for better life outcomes</span></li>
+      </ul>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- WHO WE ARE -->
+<sc-if value="{{ isWho }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Who We Are" style="animation:agFade .5s ease both">
+  <section style="position:relative;min-height:clamp(380px,52vw,560px);display:flex;align-items:flex-end;overflow:hidden;background:#3a1838">
+    <img src="assets/images/who-we-are-hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(214,38,98,.88) 0%,rgba(238,96,72,.72) 55%,rgba(244,124,60,.45) 100%)"></div>
+    <div style="position:relative;max-width:1240px;width:100%;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:18px">
+      <h4 style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Adapting Genius</h4>
+      <h1 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(47px,6.5vw,83px);line-height:1.1;letter-spacing:-.02em;color:#fff;max-width:900px;text-wrap:balance">Across the Globe, We Are United in Our Dedication to Children’s Rights<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h1>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-wwa" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,6vw,88px)">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 id="h-wwa" style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#c21f55">Who We Are<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#f47c3c" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h2>
+      <h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(36px,3.9vw,52px);line-height:1.15;letter-spacing:-.01em">Partnering to build a world where all children are lorem ipsum dolor sit amet, consectetur.</h3>
+    </div>
+    <p style="margin:0;font-size:17px;line-height:1.75;color:#5b4352;max-width:680px">As a manifestation of our guiding concept of “stewardship,” the School’s Foundation is dedicated to upholding high standards of accountability and openness. We put a lot of effort into developing the abilities and skills of poor kids. To preserve pupils’ health, physical education is encouraged. Campaigns are launched to educate pupils about all the important topics. The school’s foundation assists in locating the students who are most at risk in India’s poorest areas. Children miss school because it is inaccessible and expensive. Using the Right to Education Act as a guide, we assist in enrolling kids in school. In order to acquire a decent education, additional factors are crucial.</p>
+  </section>
+
+  <section aria-labelledby="h-founder" style="background:#fff0e3;border-radius:clamp(28px,4vw,48px);margin:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(32px,6vw,88px);align-items:start">
+      <img src="https://adaptingenius.org/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-16-at-11.51.49-PM-1.jpeg" alt="Students at Adapting Genius" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px"></img>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <h2 id="h-founder" style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#c21f55">from FOUNDER'S DESK</h2>
+        <blockquote style="margin:0;display:flex;flex-direction:column;gap:18px;font-family:'Public Sans',system-ui,sans-serif;font-size:clamp(19px,1.7vw,22px);line-height:1.6;color:#3a1838">
+          <p style="margin:0">The Cause behind the backwardness of this society is the deficiency of quality education and Poor education facility for the development of nation and welfare of citizen, quality education is needed for all. We are fairly concentrated and determined to provide such type of education in such rural and backward area.</p>
+          <p style="margin:0">we encourage you to partner with us and support our endeavors so as to have a fruitful and lasting impact on the lives of our young generation in all part of our country.</p>
+          <p style="margin:0">Let us collaboratively ignite the dreams, hopes and aspirations of the chosen generation at Adapting Genius forum Supported by AVI INTERNATIONAL SCHOOL.</p>
+        </blockquote>
+        <div style="display:flex;align-items:center;gap:14px;padding-top:8px"><span style="width:32px;height:2px;background:#e2336b"></span><span style="font-weight:600;font-size:16px">Ashvini Kumar Jha (IIT BHU)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-approach" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <h2 id="h-approach" style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(44px,5.2vw,68px);line-height:1.1;letter-spacing:-.015em">Our Approach<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#f47c3c" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px">
+      <div style="background:#fff;border:1px solid rgba(58,24,56,0.1);border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:16px">
+        <h3 style="margin:0;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#c21f55">— Our Mission</h3>
+        <p style="margin:0;font-family:'Public Sans',system-ui,sans-serif;font-size:clamp(20px,1.8vw,24px);line-height:1.5">To educate all students to the highest levels of academic achievement to enable them to reach and expand their potential, and to Prepare them to become Productive responsible ethical, creative and compassionate members of society.</p>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(58,24,56,0.1);border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:16px">
+        <h4 style="margin:0;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#c21f55">— Our Vision</h4>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.65;color:#5b4352">
+          <li style="display:flex;gap:12px"><span style="color:#e2336b;font-weight:700">·</span><span>To become one of India’s most effective NGO Program to address the schooling quality gaps and help India improve its ranking in social development Indicators all</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#e2336b;font-weight:700">·</span><span>To evolve a Cost-effective total system model for quality school education on scale, without discrimination based on solution a nationwide any factor</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#e2336b;font-weight:700">·</span><span>To initiate a education by learning levels practices with systemic transformation in school measuring the improvements in feasible by improving Pedagogy high accountability</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#e2336b;font-weight:700">·</span><span>To encourage R&amp;D based maximum benefit. SN 2 study to get the Max Benefit</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ACADEMICS -->
+<sc-if value="{{ isAcademics }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Academics" style="animation:agFade .5s ease both">
+  <section style="position:relative;min-height:clamp(380px,52vw,560px);display:flex;align-items:flex-end;overflow:hidden;background:#3a1838">
+    <img src="assets/images/academics-hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(214,38,98,.88) 0%,rgba(238,96,72,.72) 55%,rgba(244,124,60,.45) 100%)"></div>
+    <div style="position:relative;max-width:1240px;width:100%;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:18px">
+      <h4 style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Adapting Genius</h4>
+      <h1 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(47px,6.5vw,83px);line-height:1.1;letter-spacing:-.02em;color:#fff;max-width:900px;text-wrap:balance">We Support Children and Youth to Reach Their Full Potential<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h1>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,6vw,88px)">
+    <p style="margin:0;font-family:'Public Sans',system-ui,sans-serif;font-size:clamp(24px,2.4vw,32px);line-height:1.35;letter-spacing:-.005em">To build a growing movement of leaders, Adapting Genius runs a two year Fellowship and supports an unstoppable Alumni movement.</p>
+    <p style="margin:0;font-size:17px;line-height:1.75;color:#5b4352">The Adapting Genius For India Fellowship is an opportunity for India’s brightest and most promising youth, from the nation’s best universities and workplaces, to serve as full-time teachers to children from low-income communities in under-resourced schools. Through two years of teaching and working with key education stakeholders, our Fellows are exposed to the grassroot realities of India’s education system and cultivate the knowledge, skills, and mindsets needed to attain positions of leadership in and beyond education, working collectively to build a vibrant movement for educational equity across India</p>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px) clamp(56px,8vw,112px);display:flex;flex-direction:column">
+    <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,4vw,64px);padding:clamp(32px,4vw,52px) 0;border-top:1px solid rgba(58,24,56,0.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><h5 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:20px;font-weight:500;color:#c21f55">01.</h5><h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.02em">RECRUITMENT &amp; SELECTION</h3></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.7;color:#5b4352">
+        <p style="margin:0">We recruit our country’s most promising college graduates and working professionals.</p>
+        <p style="margin:0">Fellows complete a rigorous, multi-stage selection process where they are evaluated for core competencies that are important for success within and beyond the Fellowship.</p>
+        <p style="margin:0">In the past decade, <strong style="color:#3a1838">120,000 people have applied</strong> to the Teach For India Fellowship.</p>
+        <p style="margin:0">Our selectivity ranges from <strong style="color:#3a1838">6.00-8.36%</strong> competing with leading universities.</p>
+      </div>
+    </article>
+    <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,4vw,64px);padding:clamp(32px,4vw,52px) 0;border-top:1px solid rgba(58,24,56,0.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><h5 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:20px;font-weight:500;color:#c21f55">02.</h5><h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.02em">SCHOOL PLACEMENTS</h3></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.7;color:#5b4352">
+        <p style="margin:0">We place Fellows for two years in full-time teaching positions in high-need government or low-income private schools; schools where poverty and other factors may limit our students’ choices in the future. Fellows teach in grades 1-10 and are either class teachers or subject teachers. All placement schools are English medium.</p>
+        <p style="margin:0">This year, our Fellows work across <strong style="color:#3a1838">250 schools in 7 cities</strong>.</p>
+      </div>
+    </article>
+    <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,4vw,64px);padding:clamp(32px,4vw,52px) 0;border-top:1px solid rgba(58,24,56,0.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><h5 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:20px;font-weight:500;color:#c21f55">03.</h5><h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.02em">TRAINING AND SUPPORT</h3></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.7;color:#5b4352">
+        <p style="margin:0">Our pre-service and in-service training and support is designed to equip Fellows with the knowledge, skills and mindsets to become effective teachers and leaders.</p>
+        <p style="margin:0"><strong style="color:#3a1838">Institute:</strong> Prior to being placed in a school, Fellows undergo a rigorous pre-service training program that focuses on classroom practice and leadership development. At Institute, Fellows learn world-class pedagogy (e.g. lesson planning, vision setting, classroom culture) and content instruction, and also begin to develop the mindsets and beliefs needed to drive transformational change within education. They practice their teaching at Summer School during Institute training. Fellows leave institute with a strong network of people who will be their support system through the Fellowship.</p>
+      </div>
+    </article>
+    <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,4vw,64px);padding:clamp(32px,4vw,52px) 0;border-top:1px solid rgba(58,24,56,0.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><h5 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:20px;font-weight:500;color:#c21f55">04.</h5><h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.02em">CURRICULUM AND LEADERSHIP DEVELOPMENT</h3></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.7;color:#5b4352">
+        <p style="margin:0">Our Fellows work towards an India that is free of poverty and filled with love. All of us work towards three commitments.</p>
+        <div style="display:grid;gap:10px">
+          <p style="margin:0;padding:14px 18px;background:#fff;border:1.5px dashed rgba(226,51,107,0.35);border-radius:16px"><strong style="color:#3a1838">Commitment to Self</strong>: I discover myself and prepare for a life of my choice</p>
+          <p style="margin:0;padding:14px 18px;background:#fff;border:1.5px dashed rgba(226,51,107,0.35);border-radius:16px"><strong style="color:#3a1838">Commitment to Other</strong>: I accelerate the learning of others to unleash their potential</p>
+          <p style="margin:0;padding:14px 18px;background:#fff;border:1.5px dashed rgba(226,51,107,0.35);border-radius:16px"><strong style="color:#3a1838">Commitment to India</strong>: I work in partnership for educational equity</p>
+        </div>
+        <p style="margin:0">Our well-researched 8 C’s – <strong style="color:#3a1838">courage, compassion, curiosity, critical thinking, creativity, collaboration, consciousness and communication</strong> – are what students and Fellows practice each day as they work towards three commitments to self, other and India.</p>
+        <p style="margin:0">Our student vision is holistic and integrates Academic Achievement, Values and Mindsets and Exposure and Access, equipping our students to graduate from school and live a life of their choice.</p>
+      </div>
+    </article>
+    <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,4vw,64px);padding:clamp(32px,4vw,52px) 0;border-top:1px solid rgba(58,24,56,0.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><h5 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:20px;font-weight:500;color:#c21f55">05.</h5><h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.02em">IMPACT MEASUREMENT</h3></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.7;color:#5b4352">
+        <p style="margin:0">We use a number of metrics and assessment tools to measure our efforts.</p>
+        <p style="margin:0"><strong style="color:#3a1838">Reading Comprehension and Mathematics</strong>: All of Teach For India’s students take bi-annual standardized assessments, developed in partnership with an external assessment company, to measure progress on reading comprehension and mathematics.</p>
+        <p style="margin:0"><strong style="color:#3a1838">Personal Growth</strong>: Using standardized rubrics and sampled surveys, we measure personal, non-academic growth that includes values, mindsets, and exposure and access.</p>
+        <p style="margin:0"><strong style="color:#3a1838">Ongoing Studies</strong>: In addition to internal assessments, we participate in longitudinal studies to measure the academic and non-academic effects of our program over time.</p>
+      </div>
+    </article>
+    <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,4vw,64px);padding:clamp(32px,4vw,52px) 0;border-top:1px solid rgba(58,24,56,0.14);border-bottom:1px solid rgba(58,24,56,0.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><h5 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:20px;font-weight:500;color:#c21f55">06.</h5><h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.02em">ALUMNI IMPACT</h3></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.7;color:#5b4352">
+        <p style="margin:0">While the Fellowship is an intense journey, fraught with challenges to learn leadership from, it is only the beginning. At the end of two years, Fellows are inducted into the Alumni movement, where they find their piece in the puzzle of educational inequity. Fellows work from diverse places in the puzzle, building a movement for educational equity. Teach For India continues to learn from, connect and support Alumni as they strive to have greater impact on the education system.</p>
+      </div>
+    </article>
+  </section>
+</div>
+</sc-if>
+
+<!-- INFORMATION -->
+<sc-if value="{{ isInfo }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Information" style="animation:agFade .5s ease both">
+  <section style="position:relative;min-height:clamp(380px,52vw,560px);display:flex;align-items:flex-end;overflow:hidden;background:#3a1838">
+    <img src="https://adaptingenius.org/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-16-at-11.51.50-PM.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(214,38,98,.88) 0%,rgba(238,96,72,.72) 55%,rgba(244,124,60,.45) 100%)"></div>
+    <div style="position:relative;max-width:1240px;width:100%;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:18px">
+      <h4 style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Adapting Genius</h4>
+      <h1 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(47px,6.5vw,83px);line-height:1.1;letter-spacing:-.02em;color:#fff;max-width:900px;text-wrap:balance">These Are the Heroes with the Passion to Transform Their Communities<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h1>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-info" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <h2 id="h-info" style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(44px,5.2vw,68px);line-height:1.1;letter-spacing:-.015em">Our Information<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#f47c3c" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:20px">
+      <div style="background:#fff;border:1px solid rgba(58,24,56,0.1);border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:8px">
+        <h2 style="margin:0 0 12px;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#c21f55">On Teachers</h2>
+        <h3 style="margin:0;padding:20px 0;border-top:1px solid rgba(58,24,56,0.1);font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(26px,2.3vw,31px);line-height:1.4">An average attendance of 90% across all trainings conducted for teachers</h3>
+        <h3 style="margin:0;padding:20px 0;border-top:1px solid rgba(58,24,56,0.1);font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(26px,2.3vw,31px);line-height:1.4">Teachers regularly access KEF’s Audio-Visual resources for self-development and to improve classroom execution</h3>
+        <h3 style="margin:0;padding:20px 0 0;border-top:1px solid rgba(58,24,56,0.1);font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(26px,2.3vw,31px);line-height:1.4">82% of classrooms follow Developmentally Appropriate Practices regularly</h3>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(58,24,56,0.1);border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:8px">
+        <h2 style="margin:0 0 12px;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#c21f55">On Parents</h2>
+        <h3 style="margin:0;padding:20px 0;border-top:1px solid rgba(58,24,56,0.1);font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(26px,2.3vw,31px);line-height:1.4">An average attendance of 60% across all Parent Engagement workshops</h3>
+        <h3 style="margin:0;padding:20px 0;border-top:1px solid rgba(58,24,56,0.1);font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(26px,2.3vw,31px);line-height:1.4">80% of parents regularly complete the at-home worksheets and activities</h3>
+        <h3 style="margin:0;padding:20px 0 0;border-top:1px solid rgba(58,24,56,0.1);font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(26px,2.3vw,31px);line-height:1.4">30% of parents show a positive shift in their awareness of Early Childhood Education (ECE) and mindsets towards play-based learning</h3>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- CONTACT -->
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Contact Us" style="animation:agFade .5s ease both">
+  <section style="position:relative;min-height:clamp(340px,40vw,460px);display:flex;align-items:flex-end;overflow:hidden;background:#3a1838">
+    <img src="https://adaptingenius.org/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-16-at-11.51.50-PM-3-1.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(214,38,98,.9) 0%,rgba(238,96,72,.75) 60%,rgba(244,124,60,.5) 100%)"></div>
+    <div style="position:relative;max-width:1240px;width:100%;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,4vw,40px) clamp(96px,10vw,140px);display:flex;flex-direction:column;gap:14px">
+      <h4 style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Adapting Genius</h4>
+      <h1 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(64px,9vw,120px);line-height:1;color:#fff">Contact Us<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h1>
+    </div>
+  </section>
+  <section style="max-width:1240px;margin:clamp(-96px,-8vw,-64px) auto 0;padding:0 clamp(12px,3vw,40px);position:relative">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));background:#fff;border-radius:32px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);box-shadow:0 2px 4px rgba(58,24,56,0.04),0 24px 56px -24px rgba(58,24,56,0.3)">
+      <div style="background:linear-gradient(120deg,#e2336b 0%,#f47c3c 100%);color:#fff;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(38px,3.6vw,48px);line-height:1.05;color:#fff">We Would Love to Hear from You</h3>
+          <p style="margin:0;font-size:17px;line-height:1.7;color:#fff">Please write or call us with your questions or comments.</p>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:12px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(255,255,255,0.14)"><span style="width:10px;height:10px;margin-top:5px;border-radius:50%;background:#ffd166"></span><div style="display:flex;flex-direction:column;gap:6px"><h4 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffe1c2">Head Office</h4><p style="margin:0;font-size:16px;line-height:1.6;color:#fff">335/28 DLE PHASE-3 GURGAON HARYANA</p></div></div>
+          <div style="display:grid;grid-template-columns:12px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(255,255,255,0.14)"><span style="width:10px;height:10px;margin-top:5px;border-radius:50%;background:#ffd166"></span><div style="display:flex;flex-direction:column;gap:6px"><h4 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffe1c2">Branch Office</h4><p style="margin:0;font-size:16px;line-height:1.6;color:#fff">AVI INTERNATIONAL SCHOOL Near. Forbesganj College Forbesganj Araria BIHAR</p></div></div>
+          <div style="display:grid;grid-template-columns:12px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(255,255,255,0.14)"><span style="width:10px;height:10px;margin-top:5px;border-radius:50%;background:#ffd166"></span><div style="display:flex;flex-direction:column;gap:6px"><h6 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffe1c2">Contact</h6><ul style="margin:0;padding:0;list-style:none"><li><a href="tel:+917992236108" style="font-size:22px;font-weight:600;color:#fff;text-decoration:none;letter-spacing:.01em" style-hover="color:#ffe1c2">+91 7992236108</a></li></ul></div></div>
+          <div style="border-bottom:1px solid rgba(255,255,255,0.14)"><div style="display:grid;grid-template-columns:12px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(255,255,255,0.14)"><span style="width:10px;height:10px;margin-top:5px;border-radius:50%;background:#ffd166"></span><div style="display:flex;flex-direction:column;gap:6px"><h6 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffe1c2">Keep In Touch</h6><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px"><span style="padding:7px 14px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#fff;white-space:nowrap">Facebook</span><span style="padding:7px 14px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#fff;white-space:nowrap">Twitter</span><span style="padding:7px 14px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#fff;white-space:nowrap">Google-plus</span></div></div></div></div>
+        </div>
+      </div>
+      <div style="padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:24px">
+        <h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(38px,3.6vw,48px);line-height:1.05">Contact Us</h3>
+        <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+          <p role="status" style="margin:0;padding:16px 18px;background:#eef5ee;border:1px solid #b9d6bb;border-radius:8px;color:#1f4d27">Thanks for contacting us! We will be in touch with you shortly.</p>
+        </sc-if>
+        <sc-if value="{{ contactNotSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838"><span style="display:flex;gap:6px;align-items:baseline">Your Name <span style="font-weight:400;color:#6b7280;font-size:13px">(required)</span></span><input name="your-name" required="" autocomplete="name" style="height:50px;padding:0 16px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838"><span style="display:flex;gap:6px;align-items:baseline">Your Email <span style="font-weight:400;color:#6b7280;font-size:13px">(required)</span></span><input name="your-email" type="email" required="" autocomplete="email" style="height:50px;padding:0 16px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838">Subject<input name="your-subject" style="height:50px;padding:0 16px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838">Your Message<textarea name="your-message" rows="6" style="padding:14px 16px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838;resize:vertical" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></textarea></label>
+            <div aria-hidden="true" style="position:absolute;left:-9999px"><label>Website<input name="website" tabindex="-1" autocomplete="off"></input></label></div>
+            <button type="submit" style="align-self:stretch;height:54px;padding:0 32px;background:#e2336b;color:#fff;border:0;border-radius:999px;font-weight:600;font-size:16px;cursor:pointer;transition:background .15s" style-hover="background:#c21f55">Send</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ADMISSION -->
+<sc-if value="{{ isAdmission }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Admission" style="animation:agFade .5s ease both">
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,40px) clamp(56px,8vw,112px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(36px,5vw,72px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <h4 style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#c21f55">Adapting Genius</h4>
+      <h1 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(52px,6.8vw,88px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance">Help Put A Smile On A Child's Face<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#e2336b" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h1>
+      <img src="https://adaptingenius.org/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-16-at-11.51.51-PM.jpeg" alt="Children at Adapting Genius" style="width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:24px;margin-top:10px"></img>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(58,24,56,0.1);border-radius:28px;padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:22px;box-shadow:0 1px 2px rgba(58,24,56,0.04),0 12px 32px -16px rgba(58,24,56,0.18)">
+      <h2 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(34px,3.4vw,44px)">Register for admission</h2>
+      <sc-if value="{{ admissionSent }}" hint-placeholder-val="{{ false }}">
+        <p role="status" style="margin:0;padding:16px 18px;background:#eef5ee;border:1px solid #b9d6bb;border-radius:8px;color:#1f4d27">Thanks for contacting us! We will be in touch with you shortly.</p>
+      </sc-if>
+      <sc-if value="{{ admissionNotSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitAdmission }}" style="display:flex;flex-direction:column;gap:18px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Your Name <span style="font-weight:400;color:#6b7280;margin-top:-6px;font-size:13px">(required)</span><input name="your-name" required="" autocomplete="name" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Your Email <span style="font-weight:400;color:#6b7280;margin-top:-6px;font-size:13px">(required)</span><input name="your-email" type="email" required="" autocomplete="email" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Subject<input name="your-subject" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Your Message<textarea name="your-message" rows="5" style="padding:12px 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;resize:vertical" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></textarea></label>
+          <div aria-hidden="true" style="position:absolute;left:-9999px"><label>Email<input name="email" tabindex="-1" autocomplete="off"></input></label></div>
+          <button type="submit" style="align-self:flex-start;height:52px;padding:0 32px;background:#3a1838;color:#fff;border:0;border-radius:999px;font-weight:600;font-size:16px;cursor:pointer;transition:background .15s" style-hover="background:#5a2552">Send</button>
+        </form>
+      </sc-if>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- DONATE BAND (all pages except Admission, as on original) -->
+<sc-if value="{{ showDonate }}" hint-placeholder-val="{{ true }}">
+  <section aria-labelledby="h-donate" style="margin-top:clamp(56px,8vw,104px)">
+    <div style="position:relative;overflow:hidden;background:#3a1838;padding:clamp(72px,9vw,128px) max(clamp(20px,4vw,40px),calc((100% - 1160px) / 2));display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px"><img src="assets/images/donate-bg.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%"></img><div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(214,38,98,.92) 0%,rgba(238,96,72,.8) 55%,rgba(244,124,60,.6) 100%)"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;max-width:720px">
+        <h2 id="h-donate" style="margin:0;font-family:'Amatic SC',cursive;font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Donate</h2>
+        <h3 style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(39px,4.7vw,62px);line-height:1.1;letter-spacing:-.015em;color:#fff;text-wrap:balance">Support Us and Change the Course of a Child’s Life Today!<span aria-hidden="true" style="display:block;margin-top:6px;line-height:0"><svg width="150" height="14" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"></path></svg></span></h3>
+      </div>
+      <a href="#/contact-us" role="button" aria-haspopup="dialog" onClick="{{ openDonate }}" style="position:relative;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;background:#fff;color:#c21f55;font-weight:700;font-size:16px;border-radius:999px;text-decoration:none;transition:transform .15s" style-hover="transform:translateY(-2px);color:#c21f55">Donate <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</sc-if>
+
+</main>
+
+<footer style="position:relative;background:#3a1838;color:#f3dbe6;border-radius:clamp(24px,3vw,36px) clamp(24px,3vw,36px) 0 0;margin-top:clamp(32px,5vw,64px);overflow:hidden">
+  <div aria-hidden="true" style="height:6px;background:linear-gradient(90deg,#e2336b,#f47c3c,#ffd166)"></div>
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,3.5vw,40px) clamp(20px,4vw,40px) 16px;display:flex;flex-direction:column;gap:clamp(22px,2.5vw,28px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px 28px;padding-bottom:clamp(20px,2.5vw,26px);border-bottom:1.5px dashed rgba(255,255,255,0.2)">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px">
+        <a href="#/" aria-label="Adapting Genius – Home" style="background:#fff;padding:7px 11px;border-radius:14px;display:inline-flex"><img src="assets/images/Adapting%20Genius%20Pencil%20Logo.png" alt="Adapting Genius" width="127" height="64" loading="lazy" style="height:64px;width:auto"></img></a>
+        <p style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(32px,3.6vw,48px);line-height:1;color:#fff">Because Only Together We Can<span aria-hidden="true" style="display:block;margin-top:4px;line-height:0"><svg width="140" height="12" viewBox="0 0 150 14" fill="none"><path d="M2 9c12-7 22-7 34 0s22 7 34 0 22-7 34 0 22 7 34 0 8-4 10-3" stroke="#f47c3c" stroke-width="3.5" stroke-linecap="round"></path></svg></span></p>
+      </div>
+      <a href="#/contact-us" role="button" aria-haspopup="dialog" onClick="{{ openDonate }}" style="display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 28px;background:linear-gradient(120deg,#e2336b,#f47c3c);color:#fff;font-weight:700;font-size:16px;border-radius:999px;text-decoration:none;box-shadow:0 12px 26px -14px rgba(226,51,107,0.8);transition:transform .15s" style-hover="transform:translateY(-2px);color:#fff">Donate <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:clamp(24px,3vw,32px) clamp(24px,3vw,40px);align-items:start">
+      <nav aria-label="Footer" style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffd166">Pages</h2>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+            <a href="{{ item.href }}" style="color:#fff;font-size:15px;line-height:1.4;text-decoration:none;padding:2px 0;white-space:nowrap;transition:color .15s" style-hover="color:#ffd166">{{ item.label }}</a>
+          </sc-for>
+        </div>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffd166">Head Office</h2>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#fff">335/28 DLE PHASE-3 GURGAON HARYANA</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffd166">Branch Office</h2>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#fff">AVI INTERNATIONAL SCHOOL Near. Forbesganj College Forbesganj Araria BIHAR</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-family:'Amatic SC',cursive;font-size:24px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffd166">Contact</h2>
+        <div style="display:flex;align-items:center;gap:14px">
+          <a href="tel:+917992236108" style="color:#fff;font-size:18px;font-weight:600;text-decoration:none" style-hover="color:#ffd166">+91 7992236108</a>
+          <a href="https://api.whatsapp.com/send/?phone=917992236108&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp us" title="WhatsApp us" style="display:inline-flex;line-height:0;text-decoration:none;transition:transform .15s" style-hover="transform:translateY(-2px)"><svg width="34" height="34" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.12);font-size:13px;color:#f3dbe6">
+      <span>Copyright © 2026 adaptingenius</span>
+      <span style="display:inline-flex;align-items:center;gap:10px;padding-left:16px;border-left:1px solid rgba(255,255,255,0.25);color:#fff;font-weight:500">Powered By
+        <a href="https://www.dripfunnel.com/in/" target="_blank" rel="noopener" aria-label="DripFunnel" style="display:inline-flex;line-height:0;transition:opacity .15s" style-hover="opacity:.85"><img src="assets/dripfunnel/DRIPFUNNEL white logo.png" alt="DripFunnel" height="22" loading="lazy" style="height:22px;width:auto"></img></a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://api.whatsapp.com/send/?phone=917992236108&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp us" onMouseEnter="{{ waOn }}" onMouseLeave="{{ waOff }}" onFocus="{{ waOn }}" onBlur="{{ waOff }}" style="position:fixed;right:clamp(16px,2.5vw,28px);bottom:clamp(16px,2.5vw,28px);z-index:60;height:60px;display:flex;align-items:center;justify-content:flex-end;padding:0 14px 0 {{ waPadL }};background:#25d366;color:#fff;border-radius:999px;text-decoration:none;box-shadow:0 10px 28px -8px rgba(0,0,0,0.4);transition:padding .3s ease" style-hover="background:#25d366;color:#fff"><span style="overflow:hidden;white-space:nowrap;max-width:{{ waLabelW }};opacity:{{ waLabelO }};margin-right:{{ waLabelM }};color:#0f2a1a;font-weight:600;font-size:16px;transition:max-width .3s ease, opacity .2s ease, margin .3s ease">Chat with us</span><svg viewBox="0 0 24 24" width="32" height="32" style="flex-shrink:0" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg></a>
+
+<sc-if value="{{ donateOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeDonate }}" style="position:fixed;inset:0;z-index:95;background:rgba(40,14,38,0.7);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px);overflow-y:auto;animation:agFade .25s ease both">
+    <div role="dialog" aria-modal="true" aria-labelledby="donate-title" onClick="{{ stop }}" style="position:relative;width:100%;max-width:560px;max-height:100%;overflow-y:auto;background:#fff;border-radius:32px;box-shadow:0 30px 80px -20px rgba(0,0,0,0.5)">
+      <div style="position:relative;background:#3a1838;padding:28px clamp(22px,4vw,36px) 24px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'Amatic SC',cursive;font-size:28px;font-weight:700;letter-spacing:.06em;line-height:1;color:#ffe1c2">Donate</span>
+        <h2 id="donate-title" style="margin:0;font-family:'Amatic SC',cursive;font-weight:700;font-size:clamp(34px,5vw,44px);line-height:1.05;color:#fff;padding-right:40px">Support Us and Change the Course of a Child’s Life Today!</h2>
+        <button type="button" onClick="{{ closeDonate }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,0.12);color:#fff;font-size:22px;cursor:pointer" style-hover="background:rgba(255,255,255,0.22)">×</button>
+      </div>
+      <div style="padding:clamp(22px,4vw,36px)">
+        <sc-if value="{{ donateSent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display:flex;flex-direction:column;gap:18px">
+            <p style="margin:0;padding:16px 18px;background:#eef5ee;border:1px solid #b9d6bb;border-radius:8px;color:#1f4d27">Thanks for contacting us! We will be in touch with you shortly.</p>
+            <button type="button" onClick="{{ closeDonate }}" style="align-self:flex-start;height:48px;padding:0 26px;background:#3a1838;color:#fff;border:0;border-radius:999px;font-weight:600;cursor:pointer">Close</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ donateNotSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitDonate }}" style="display:flex;flex-direction:column;gap:16px">
+            <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+              <legend style="padding:0;margin-bottom:10px;font-size:14px;font-weight:600;color:#3a1838">Amount (₹) <span style="font-weight:400;color:#6b7280;font-size:13px">(required)</span></legend>
+              <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+                <sc-for list="{{ amounts }}" as="a" hint-placeholder-count="4">
+                  <button type="button" onClick="{{ a.pick }}" aria-pressed="{{ a.pressed }}" style="height:46px;border-radius:999px;border:1.5px solid {{ a.border }};background:{{ a.bg }};color:{{ a.fg }};font-weight:600;font-size:15px;cursor:pointer;transition:all .15s">{{ a.label }}</button>
+                </sc-for>
+              </div>
+              <input name="amount" type="number" min="1" required="" inputMode="numeric" placeholder="Other amount" value="{{ amount }}" onChange="{{ setAmount }}" aria-label="Amount in rupees" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838;width:100%" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input>
+            </fieldset>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838"><span style="display:flex;gap:6px;align-items:baseline">Your Name <span style="font-weight:400;color:#6b7280;font-size:13px">(required)</span></span><input name="your-name" required="" autocomplete="name" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838;width:100%" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838"><span style="display:flex;gap:6px;align-items:baseline">Your Email <span style="font-weight:400;color:#6b7280;font-size:13px">(required)</span></span><input name="your-email" type="email" required="" autocomplete="email" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838;width:100%" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838">Phone<input name="your-phone" type="tel" autocomplete="tel" style="height:48px;padding:0 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838;width:100%" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#3a1838">Your Message<textarea name="your-message" rows="3" style="padding:12px 14px;border:1.5px solid rgba(58,24,56,0.14);border-radius:14px;background:#fdf6ee;font-size:16px;font-weight:400;color:#3a1838;resize:vertical" style-focus="border-color:#e2336b;background:#fff;outline:none;box-shadow:0 0 0 3px rgba(226,51,107,0.2)"></textarea></label>
+            <button type="submit" style="height:54px;background:#e2336b;color:#fff;border:0;border-radius:999px;font-weight:600;font-size:16px;cursor:pointer;transition:background .15s" style-hover="background:#c21f55">Donate</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Image viewer" onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:90;background:rgba(40,14,38,0.92);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,56px)">
+    {{ lightboxImg }}
+    <button type="button" onClick="{{ closeLightbox }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,0.14);color:#fff;font-size:22px;cursor:pointer">×</button>
+    <button type="button" onClick="{{ prevImg }}" aria-label="Previous image" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,0.14);color:#fff;font-size:22px;cursor:pointer">‹</button>
+    <button type="button" onClick="{{ nextImg }}" aria-label="Next image" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,0.14);color:#fff;font-size:22px;cursor:pointer">›</button>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const BASE = 'https://adaptingenius.org/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-16-at-';
+const GALLERY = [
+  ['11.51.51-PM-1.jpeg?w=1280', 'WhatsApp Image 2022-08-16 at 11.51.51 PM (1)'],
+  ['11.51.51-PM.jpeg?w=1280', 'WhatsApp Image 2022-08-16 at 11.51.51 PM'],
+  ['11.51.50-PM-3-1.jpeg?w=1280', 'WhatsApp Image 2022-08-16 at 11.51.50 PM (3)'],
+  ['11.51.50-PM-2.jpeg?w=1280', 'WhatsApp Image 2022-08-16 at 11.51.50 PM (2)'],
+  ['11.51.50-PM-1.jpeg?w=1040', 'WhatsApp Image 2022-08-16 at 11.51.50 PM (1)'],
+  ['11.51.50-PM.jpeg?w=1280', 'WhatsApp Image 2022-08-16 at 11.51.50 PM'],
+  ['11.51.49-PM-1.jpeg?w=1040', 'WhatsApp Image 2022-08-16 at 11.51.49 PM (1)'],
+  ['11.51.49-PM.jpeg?w=709', 'WhatsApp Image 2022-08-16 at 11.51.49 PM']
+].map(([f, alt]) => ({ src: BASE + f.split('?')[0], alt }));
+const PAGES = [
+  { key: 'home', path: '', label: 'Home', title: 'NGO – NGO' },
+  { key: 'who', path: 'who-we-are', label: 'Who We Are', title: 'Who We Are – NGO' },
+  { key: 'academics', path: 'academics', label: 'Academics', title: 'Academics – NGO' },
+  { key: 'info', path: 'information', label: 'Information', title: 'Information – NGO' },
+  { key: 'contact', path: 'contact-us', label: 'Contact Us', title: 'Contact Us – NGO' },
+  { key: 'admission', path: 'admission', label: 'Admission', title: 'Admission – NGO' }
+];
+function readRoute() {
+  const p = (location.hash || '').replace(/^#\/?/, '').replace(/\/$/, '');
+  const hit = PAGES.find(x => x.path === p);
+  return hit ? hit.key : (p === 'content' ? null : 'home');
+}
+class Component extends DCLogic {
+  state = { page: readRoute() || 'home', w: window.innerWidth, scrolled: false, menu: false, lb: -1, contactSent: false, admissionSent: false, donateOpen: false, donateSent: false, amount: '', wa: false };
+  componentDidMount() {
+    this.onHash = () => {
+      const r = readRoute();
+      if (!r) return;
+      if (r !== this.state.page) { this.setState({ page: r, menu: false }); window.scrollTo(0, 0); }
+    };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const s = window.scrollY > 8; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onKey = e => {
+      if (e.key === 'Escape' && this.state.donateOpen) { this.setState({ donateOpen: false }); return; }
+      if (this.state.lb < 0) { if (e.key === 'Escape' && this.state.menu) this.setState({ menu: false }); return; }
+      if (e.key === 'Escape') this.setState({ lb: -1 });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this.setTitle();
+  }
+  componentDidUpdate(_, prev) { if (prev.page !== this.state.page) this.setTitle(); if (prev.donateOpen !== this.state.donateOpen) document.body.style.overflow = this.state.donateOpen ? 'hidden' : ''; }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+  }
+  setTitle() { const p = PAGES.find(x => x.key === this.state.page); if (p) document.title = p.title; }
+  step(d) { this.setState(s => ({ lb: (s.lb + d + GALLERY.length) % GALLERY.length })); }
+  submit(which) {
+    return e => {
+      e.preventDefault();
+      const f = e.currentTarget;
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      // TODO: POST FormData(f) to the production endpoint (original used WPForms on adaptingenius.org)
+      this.setState({ [which]: true });
+    };
+  }
+  renderVals() {
+    const { page, w, scrolled, menu, lb } = this.state;
+    const isMobile = w < 960;
+    return {
+      nav: PAGES.map(p => ({ label: p.label, href: '#/' + p.path, active: p.key === page, current: p.key === page ? 'page' : undefined })),
+      isDesktop: !isMobile, isMobile, showMobileMenu: isMobile && menu, menuOpenStr: menu ? 'true' : 'false',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
+      headerBorder: scrolled ? 'rgba(58,24,56,0.1)' : 'transparent',
+      headerShadow: scrolled ? '0 6px 20px -14px rgba(58,24,56,0.35)' : 'none',
+      isHome: page === 'home', isWho: page === 'who', isAcademics: page === 'academics', isInfo: page === 'info', isContact: page === 'contact', isAdmission: page === 'admission',
+      showDonate: page !== 'admission',
+      gallery: GALLERY.map((g, i) => ({ ...g, label: 'View image ' + (i + 1), open: () => this.setState({ lb: i }) })),
+      lightboxOpen: lb >= 0, lightboxImg: lb >= 0 ? React.createElement('img', { src: GALLERY[lb].src, alt: GALLERY[lb].alt, style: { maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 8 } }) : null, lightboxSrc: lb >= 0 ? GALLERY[lb].src : '', lightboxAlt: lb >= 0 ? GALLERY[lb].alt : '',
+      closeLightbox: () => this.setState({ lb: -1 }),
+      prevImg: e => { e.stopPropagation(); this.step(-1); }, nextImg: e => { e.stopPropagation(); this.step(1); },
+      contactSent: this.state.contactSent, contactNotSent: !this.state.contactSent,
+      admissionSent: this.state.admissionSent, admissionNotSent: !this.state.admissionSent,
+      submitContact: this.submit('contactSent'),
+      waOn: () => this.setState({ wa: true }), waOff: () => this.setState({ wa: false }),
+      waLabelW: this.state.wa ? '140px' : '0px', waLabelO: this.state.wa ? 1 : 0, waLabelM: this.state.wa ? '14px' : '0px', waPadL: this.state.wa ? '26px' : '14px',
+      donateOpen: this.state.donateOpen, donateSent: this.state.donateSent, donateNotSent: !this.state.donateSent,
+      openDonate: e => { e.preventDefault(); this.setState({ donateOpen: true, donateSent: false, menu: false }); },
+      closeDonate: () => this.setState({ donateOpen: false }), stop: e => e.stopPropagation(),
+      submitDonate: this.submit('donateSent'), amount: this.state.amount,
+      setAmount: e => this.setState({ amount: e.target.value }),
+      amounts: ['500', '1000', '2500', '5000'].map(v => { const on = this.state.amount === v; return { label: '₹' + Number(v).toLocaleString('en-IN'), pick: () => this.setState({ amount: v }), pressed: on ? 'true' : 'false', border: on ? '#e2336b' : 'rgba(58,24,56,0.18)', bg: on ? '#e2336b' : '#fff', fg: on ? '#fff' : '#3a1838' }; }), submitAdmission: this.submit('admissionSent')
+    };
+  }
+}
+</script>
+</body>
+</html>
